@@ -1,0 +1,93 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _220524_Classwork
+{
+    class Student : User
+    {
+
+
+        public string Grade;
+
+
+        public void GetData()
+        {
+            Console.WriteLine($"username = {Username}, password = {Password}");
+        }
+    }
+}
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _220524_Classwork
+{
+    internal class User
+    {
+        public string Name;
+        public string Surname;
+        public string Username;
+        public string Password;
+    }
+}
+
+using System;
+
+namespace _220524_Classwork
+{
+    class Program
+    {
+        public static object Username { get; private set; }
+
+        public static void Main(string[] args)
+        {
+            Student Ali = new Student          
+            {
+                Name = "Ali",
+                Surname = "Aliyev",
+                Username = "Aali",
+                Password = "a111",
+                Grade = "A" 
+            };
+            Student Mammed = new Student
+            {
+                Name = "Mammed",
+                Surname = "Mammedov",
+                Username = "Mmammed",
+                Password = "m111",
+                Grade = "A"
+            };
+            Student Qurban = new Student
+            {
+                Name = "Qurban",
+                Surname = "Qurbanov",
+                Username = "Qqurban",
+                Password = "q111",
+                Grade = "B" 
+            };
+
+            Student[] students = {Ali, Mammed, Qurban};
+
+            Console.WriteLine("Please inter Username and Password: ");
+            string studentusername = Console.ReadLine();
+            string studentpassword = Console.ReadLine();
+
+            bool flag = false; 
+            foreach (Student student in students)
+            {
+                if (student.Username == studentusername)
+                {
+                    flag = true;
+                    Console.WriteLine(student.Grade);
+                }
+                if (!flag) Console.WriteLine("Error");    
+            }
+        }
+    }
+}
